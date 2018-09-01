@@ -1,14 +1,11 @@
 %global srcname iso-639
 %global common_summary  ISO 639 library for Python
 %global common_description %{summary}.\
-ISO 639-1, ISO 639-2, ISO 639-3, ISO 639-5 are supported.\
-\
-NOTE: this package must NOT be confused with the python-iso639 package, which is\
-different.
+ISO 639-1, ISO 639-2, ISO 639-3, ISO 639-5 are supported.
 
 Name:           python-%{srcname}
 Version:        0.4.5
-Release:        5%{?dist}
+Release:        1
 Summary:        %{common_summary}
 
 Group:          System Environment/Libraries
@@ -16,8 +13,10 @@ License:        AGPLv3
 URL:            https://github.com/noumar/iso639/
 Source0:        https://github.com/noumar/iso639/archive/%{version}/%{srcname}-%{version}.tar.gz
 
-BuildRequires:  python2-devel
-BuildRequires:  python3-devel
+BuildRequires:  pkgconfig(python2)
+BuildRequires:  pkgconfig(python)
+BuildRequires:  python3egg(setuptools)
+BuildRequires:  pythonegg(setuptools)
 BuildArch:      noarch
 
 %description
@@ -46,12 +45,12 @@ Summary:        %{common_summary}
 
 %build
 %py2_build
-%py3_build
+%py_build
 
 
 %install
 %py2_install
-%py3_install
+%py_install
 
 
 %check
@@ -71,21 +70,4 @@ Summary:        %{common_summary}
 %files -n python3-%{srcname}
 %doc CHANGES.rst README.rst
 %license LICENSE.txt
-%{python3_sitelib}/*
-
-
-%changelog
-* Sat Jul 14 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.5-5
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
-
-* Tue Jun 19 2018 Miro Hrončok <mhroncok@redhat.com> - 0.4.5-4
-- Rebuilt for Python 3.7
-
-* Fri Feb 09 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.5-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
-
-* Thu Jul 27 2017 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.5-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
-
-* Tue Feb 21 2017 Mohamed El Morabity <melmorabity@fedoraproject.org> - 0.4.5-1
-- Initial RPM release
+%{python_sitelib}/*
