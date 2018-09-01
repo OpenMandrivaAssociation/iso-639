@@ -68,6 +68,6 @@ Summary:        %{common_summary}
 
 
 %files -n python3-%{srcname}
-%doc CHANGES.rst README.rst
-%license LICENSE.txt
+#doc CHANGES.rst README.rst
+#license LICENSE.txt
 %{python_sitelib}/*
