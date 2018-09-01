@@ -62,7 +62,7 @@ Summary:        %{common_summary}
 
 
 %files -n python2-%{srcname}
-%doc CHANGES.rst README.rst
+#doc CHANGES.rst README.rst
 %license LICENSE.txt
 %{python2_sitelib}/*
 
