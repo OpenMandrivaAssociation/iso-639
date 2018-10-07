@@ -40,7 +40,7 @@ Summary:        %{common_summary}
 
 
 %prep
-%autosetup -n iso-639-%{version}
+%autosetup -n iso639-%{version}
 
 
 %build
