@@ -5,7 +5,7 @@ ISO 639-1, ISO 639-2, ISO 639-3, ISO 639-5 are supported.
 
 Name:           python-%{srcname}
 Version:        0.4.5
-Release:        2
+Release:        3
 Summary:        %{common_summary}
 
 Group:          System Environment/Libraries
@@ -22,14 +22,12 @@ BuildArch:      noarch
 %description
 %{common_description}
 
-
 %package -n python2-%{srcname}
 Summary:        %{common_summary}
 %{?python_provide:%python_provide python2-%{srcname}}
 
 %description -n python2-%{srcname}
 %{common_description}
-
 
 %package -n python3-%{srcname}
 Summary:        %{common_summary}
@@ -38,20 +36,16 @@ Summary:        %{common_summary}
 %description -n python3-%{srcname}
 %{common_description}
 
-
 %prep
 %autosetup -n iso639-%{version}
-
 
 %build
 %py2_build
 %py_build
 
-
 %install
 %py2_install
 %py_install
-
 
 %check
 # Tests mostly check compatibility with the pycountry library, not available in
@@ -60,12 +54,10 @@ Summary:        %{common_summary}
 # %%{__python2} tests/tests.py
 # %%{__python3} tests/tests.py
 
-
 %files -n python2-%{srcname}
 #doc CHANGES.rst README.rst
 #license LICENSE.txt
 %{python2_sitelib}/*
-
 
 %files -n python3-%{srcname}
 #doc CHANGES.rst README.rst
