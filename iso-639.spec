@@ -5,7 +5,7 @@ ISO 639-1, ISO 639-2, ISO 639-3, ISO 639-5 are supported.
 
 Name:           python-%{srcname}
 Version:        0.4.5
-Release:        3
+Release:        4
 Summary:        %{common_summary}
 
 Group:          System Environment/Libraries
@@ -15,9 +15,12 @@ Source0:        https://github.com/noumar/iso639/archive/%{version}/%{srcname}-%
 
 BuildRequires:  pkgconfig(python2)
 BuildRequires:  pkgconfig(python)
-BuildRequires:  python3egg(setuptools)
-BuildRequires:  pythonegg(setuptools)
+BuildRequires:  python3dist(setuptools)
+BuildRequires:  python2dist(setuptools)
 BuildArch:      noarch
+
+%{?python_provide:%python_provide python3-%{srcname}}
+Provides:   python3-%{srcname}
 
 %description
 %{common_description}
@@ -27,13 +30,6 @@ Summary:        %{common_summary}
 %{?python_provide:%python_provide python2-%{srcname}}
 
 %description -n python2-%{srcname}
-%{common_description}
-
-%package -n python3-%{srcname}
-Summary:        %{common_summary}
-%{?python_provide:%python_provide python3-%{srcname}}
-
-%description -n python3-%{srcname}
 %{common_description}
 
 %prep
@@ -47,19 +43,12 @@ Summary:        %{common_summary}
 %py2_install
 %py_install
 
-%check
-# Tests mostly check compatibility with the pycountry library, not available in
-# Fedora
-# export PYTHONPATH=$PWD
-# %%{__python2} tests/tests.py
-# %%{__python3} tests/tests.py
-
 %files -n python2-%{srcname}
 #doc CHANGES.rst README.rst
 #license LICENSE.txt
 %{python2_sitelib}/*
 
-%files -n python3-%{srcname}
+%files
 #doc CHANGES.rst README.rst
 #license LICENSE.txt
 %{python_sitelib}/*
