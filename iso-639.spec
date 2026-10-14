@@ -5,7 +5,7 @@ ISO 639-1, ISO 639-2, ISO 639-3, ISO 639-5 are supported.
 
 Name:           python-%{srcname}
 Version:        0.4.5
-Release:        6
+Release:        7
 Summary:        %{common_summary}
 
 Group:          System Environment/Libraries
@@ -13,7 +13,7 @@ License:        AGPLv3
 URL:            https://github.com/noumar/iso639/
 Source0:        https://github.com/noumar/iso639/archive/%{version}/%{srcname}-%{version}.tar.gz
 
-BuildRequires:  pkgconfig(python)
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  python%{pyver}dist(setuptools)
 BuildArch:      noarch
 
